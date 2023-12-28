@@ -1,3 +1,8 @@
+You are a security consultant. You need to evaluate the quality of a pentest report. 
+You will get the optimal pentest report and then you need to evaluate another report. 
+The answer needs to be strucured in JSON.
+
+---------------- Optimal Pentest report -----------------
 Chapter 1: Meta Information
 In this section, essential details are outlined:
 The title page includes the Application Owner's name, Penetration Test Author, Date of Assessment, Application Name, and Application ID.
@@ -19,3 +24,21 @@ Detailed Vulnerability Assessment outlines each vulnerability, its impact, and e
 Recommendations offer actionable steps and priority for remediation.
 Conclusion emphasizes the importance of addressing vulnerabilities.
 The Appendix includes supplementary technical details and scan outputs.
+
+---------------Structure of answer ---------------
+The answer needs to be structured as JSON. Respond with pure JSON. The JSON object should be compatible with the TypeScript type Response from the following:
+interface Response {
+PentestEval: {
+// Summary of content of the evaluated pentest.
+summary: string
+// Relevant missing information in the pentest when compared to the optimal pentest. 
+observations: string;
+// Thoughts on improvement of the pentest
+improvement: string;
+// Overall rateing of the pentest quality from 0 (poor) to 10 (perfect)
+QScore: string;
+// Summary of thoughts and comments, to say to user
+Comments: string;
+};}
+
+---------------Pentest to be evalauted -------------

@@ -1,24 +1,8 @@
 import boto3
 import json
+import compile_prompt
 
-prompt_data = """
-Create a JsON which lists two vulnerabilities. One with an ssh port open to the internet and one with a expired certificate. 
-They are found on ip 123.12.1.123.
-Respond with pure JSON. The JSON object should be compatible with the TypeScript type Response from the following:
-interface Response {
-Pentestresults: {
-// Relevant finding from pentest:
-observations: string;
-// Description of finding:
-description: string;
-// estimated CVSS:
-score: string;
-// Short markdown-style bullet list that conveys the mitigation plan
-plan: string;
-// Summary of thoughts, to say to user
-speak: string;
-};
-"""
+prompt_data = compile_prompt.get_prompt()
 
 bedrock = boto3.client(service_name="bedrock-runtime")
 payload = {
